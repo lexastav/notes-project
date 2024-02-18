@@ -3,6 +3,7 @@ package ru.lexastav.service.impl;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.lexastav.model.Note;
 import ru.lexastav.repository.NoteRepository;
 import ru.lexastav.service.NoteService;
@@ -25,6 +26,7 @@ public class NoteServiceImpl implements NoteService {
     public Note updateNote(Note note) { return repository.save(note); }
 
     @Override
+    @Transactional
     public void deleteNote(String title) {
         repository.deleteByTitle(title);
     }
